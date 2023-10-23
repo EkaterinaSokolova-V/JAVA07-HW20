@@ -26,10 +26,17 @@ public class Main {
 //*****************************************************************************
 
     public static void main(String[] args) {
-        System.out.println(Utils.flattenStrings(List.of("каждый", "охотник")));
+        //My solution:
         System.out.println(Utils.flattenInts(List.of(3, 0, -4, 2)));
+        System.out.println(Utils.flattenStrings(List.of("каждый", "охотник")));
+
+        //Dmitriy solution:
+        System.out.println(Utils.flattenIntsDmitriy(List.of(3, 0, -4, 2)));
+        List<Character> chars = Utils.flattenStringsDmitriy(List.of("каждый", "охотник"));
+        System.out.println(chars);
     }
 
+//    Задача №1
 //    public static List<Integer> flattenInts(List<Integer> list){
 //        List<Integer> result = new ArrayList<>();
 //        for (Integer el: list) {
@@ -46,6 +53,7 @@ public class Main {
 //        return result;
 //    }
 
+//    Задача №2
 //    public static List<String> flattenStrings(List<String> list) {
 //        List<String> letters = new ArrayList<>();
 //        for (String el: list) {
