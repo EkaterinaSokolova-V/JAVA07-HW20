@@ -82,6 +82,16 @@ public class Utils {
         return flattenDmitriy(source, oTM);
     }
 
+    public static List<Integer> codes(List<String> strings) {
+        return flattenDmitriy(strings, string -> {
+            List<Integer> result = new ArrayList<>();
+            for (char c: string.toCharArray()) {
+                result.add((int)c);
+            }
+            return result;
+        });
+    }
+
     public static <T, U> List<U> flattenDmitriy(List<T> source, OneToMany<T, U> oneToMany) {
         List<U> result = new ArrayList<>();
         for (T el: source) {

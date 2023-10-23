@@ -34,6 +34,8 @@ public class Main {
         System.out.println(Utils.flattenIntsDmitriy(List.of(3, 0, -4, 2)));
         List<Character> chars = Utils.flattenStringsDmitriy(List.of("каждый", "охотник"));
         System.out.println(chars);
+
+        System.out.println(Utils.codes(List.of("каждый", "охотник")));
     }
 
 //    Задача №1
