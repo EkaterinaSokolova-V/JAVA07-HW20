@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Main {
 //    Задача №1
@@ -48,6 +49,12 @@ public class Main {
                 List.of("желает", "знать"),
                 List.of("где", "сидит", "фазан")
         )));
+
+        //Filter
+        final Predicate<Integer> onlyNegatives = x -> x < 0;
+        System.out.println(Utils.filter(List.of(1, 2, -8, -9), onlyNegatives));
+
+        System.out.println(Utils.split(List.of(1, 2, -8, -9), onlyNegatives));
     }
 
 //    Задача №1

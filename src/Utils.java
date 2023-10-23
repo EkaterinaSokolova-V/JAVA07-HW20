@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class Utils {
     public static List<Integer> flattenInts(List<Integer> list){
@@ -92,6 +94,8 @@ public class Utils {
         });
     }
 
+    ///////////////////////////////////////////////////////////////////////
+
     public static <T, U> List<U> flattenDmitriy(List<T> source, OneToMany<T, U> oneToMany) {
         List<U> result = new ArrayList<>();
         for (T el: source) {
@@ -99,6 +103,15 @@ public class Utils {
         }
         return result;
     }
+
+//we can use a predefined Function rather than OneToMany
+//    public static <T, U> List<U> flattenDmitriy(List<T> source, Function<T, List<U>> oneToMany) {
+//        List<U> result = new ArrayList<>();
+//        for (T el: source) {
+//            result.addAll(oneToMany.apply(el));
+//        }
+//        return result;
+//    }
 
     public static <T extends Comparable<T>> T getMax(List<T> source) {
         if (source.size() == 0) {
@@ -121,4 +134,43 @@ public class Utils {
 //    public static String maxStrings(List<List<String>> source) {
 //        return getMax(flattenDmitriy(source, (List<String> str) -> str));
 //    }
+
+    ///////////////////////////////////////////////////////////////////////
+
+    public static <T> List<T> filter(List<T> source, Predicate<T> yesOrNo) {
+        List<T> result = new ArrayList<>();
+        for (T el: source) {
+            if (yesOrNo.test(el)) {
+                result.add(el);
+            }
+        }
+        return result;
+    }
+
+    public static <T> Splitted<T> split(List<T> source, Predicate<T> yesOrNo) {
+        List<T> passed = new ArrayList<>();
+        List<T> rejected = new ArrayList<>();
+        for (T el: source) {
+            if (yesOrNo.test(el)) {
+                passed.add(el);
+            } else {
+                rejected.add(el);
+            }
+        }
+        return new Splitted<>(passed, rejected);
+    }
+
+    static class Splitted<T> {
+        private final List<T> passed;
+        private final List<T> rejected;
+
+        public Splitted(List<T> passed, List<T> rejected) {
+            this.passed = passed;
+            this.rejected = rejected;
+        }
+
+        public String toString() {
+            return "Passed: " + passed + ", Rejected: " + rejected;
+        }
+    }
 }
