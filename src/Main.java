@@ -36,6 +36,18 @@ public class Main {
         System.out.println(chars);
 
         System.out.println(Utils.codes(List.of("каждый", "охотник")));
+
+        //Find Max:
+        System.out.println(Utils.max(List.of(
+                List.of(1, 2, 3, 4),
+                List.of(-3, 0, 9),
+                List.of(100, 6, -55)
+        )));
+        System.out.println(Utils.max(List.of(
+                List.of("каждый", "охотник"),
+                List.of("желает", "знать"),
+                List.of("где", "сидит", "фазан")
+        )));
     }
 
 //    Задача №1

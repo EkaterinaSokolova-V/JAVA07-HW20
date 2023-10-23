@@ -99,4 +99,26 @@ public class Utils {
         }
         return result;
     }
+
+    public static <T extends Comparable<T>> T getMax(List<T> source) {
+        if (source.size() == 0) {
+            throw new IllegalArgumentException("Cannot find max of an empty list");
+        }
+        T currentMax = source.get(0);
+        for (T element: source) {
+            if (element.compareTo(currentMax) > 0) {
+                currentMax = element;
+            }
+        }
+        return currentMax;
+    }
+
+    public static <T extends Comparable<T>> T max(List<List<T>> source) {
+        List<T> allTs = flattenDmitriy(source, (List<T> list) -> list);
+        return getMax(allTs);
+    }
+
+//    public static String maxStrings(List<List<String>> source) {
+//        return getMax(flattenDmitriy(source, (List<String> str) -> str));
+//    }
 }
