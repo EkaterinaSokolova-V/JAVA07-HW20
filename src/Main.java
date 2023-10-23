@@ -30,7 +30,7 @@ public class Main {
         System.out.println(Utils.flattenInts(List.of(3, 0, -4, 2)));
         System.out.println(Utils.flattenStrings(List.of("каждый", "охотник")));
 
-        //Dmitriy solution:
+        //Dmitriy's solution:
         System.out.println(Utils.flattenIntsDmitriy(List.of(3, 0, -4, 2)));
         List<Character> chars = Utils.flattenStringsDmitriy(List.of("каждый", "охотник"));
         System.out.println(chars);
