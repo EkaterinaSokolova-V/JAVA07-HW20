@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -171,6 +172,14 @@ public class Utils {
 
         public String toString() {
             return "Passed: " + passed + ", Rejected: " + rejected;
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+
+    public static <T> void foreach(List<T> source, Consumer<T> consumer) {
+        for (T el: source) {
+            consumer.accept(el);
         }
     }
 }

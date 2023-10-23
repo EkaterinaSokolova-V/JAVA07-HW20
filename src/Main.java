@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -59,6 +60,15 @@ public class Main {
                 str -> str.startsWith("о")));
 
         System.out.println(Utils.split(List.of(1, 2, -8, -9), onlyNegatives));
+
+//        Utils.foreach(List.of(1, 4, 6, 7, -7, -3), i -> System.out.println(i));
+        Utils.foreach(List.of(1, 4, 6, 7, -7, -3), i -> {
+           if (i > 0) {
+               System.out.println(i);
+           } else {
+               System.out.println(-1 * i);
+           }
+        });
     }
 
 //    Задача №1
