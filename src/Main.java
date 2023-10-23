@@ -54,6 +54,10 @@ public class Main {
         final Predicate<Integer> onlyNegatives = x -> x < 0;
         System.out.println(Utils.filter(List.of(1, 2, -8, -9), onlyNegatives));
 
+        System.out.println(Utils.filter(
+                List.of("каждый", "охотник1", "охотник2"),
+                str -> str.startsWith("о")));
+
         System.out.println(Utils.split(List.of(1, 2, -8, -9), onlyNegatives));
     }
 
