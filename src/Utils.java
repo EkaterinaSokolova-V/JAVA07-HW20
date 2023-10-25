@@ -48,13 +48,41 @@ public class Utils {
 
     ///////////////////////////////////////////////////////////////////////
 
+    //*********************************************************************
     public static List<Integer> flattenIntsDmitriy(List<Integer> source) {
-        return flattenDmitriy(source, new OneToMany<Integer, Integer> () {
+        //define an anonymous nested class oneToManyTransformer
+        //oneToMany is an instance of nested anonymous class oneToManyTransformer
+        class oneToManyTransformer implements OneToMany<Integer, Integer> {
+
             @Override
             public List<Integer> oneToMany(Integer source) {
                 return allIntsUpTo(source);
             }
-        });
+        }
+        oneToManyTransformer oneToMany = new oneToManyTransformer();
+
+        //*********************************************************************
+        //Or:
+        //we use this syntactics to simplify the code, because then we don't need this class
+
+//        OneToMany<Integer, Integer> oneToMany = new OneToMany<Integer, Integer>() {
+//
+//            @Override
+//            public List<Integer> oneToMany(Integer source) {
+//                return allIntsUpTo(source);
+//            }
+//        };
+
+        return flattenDmitriy(source, oneToMany);
+
+//        return flattenDmitriy(source, new OneToMany<Integer, Integer> () {
+//            @Override
+//            public List<Integer> oneToMany(Integer source) {
+//                return allIntsUpTo(source);
+//            }
+//        });
+        //*********************************************************************
+
 //        or Lambda (can be used if there is only one method in interface):
 //        return flattenDmitriy(source, i -> allIntsUpTo(i));
     }
